@@ -91,11 +91,43 @@ php artisan test
 
 ## 🔒 Endpoints Overview
 
-- **Auth**: `/api/register`, `/api/login`, `/api/logout`
-- **Public Core**: 
-  - `GET /api/courses` (List all courses)
-  - `GET /api/courses/{course}` (View course detail)
-- **Admin Core**:
-  - CRUD operations for `/api/topics`
-  - CRUD operations for `/api/languages`
-  - Create, Update, Delete operations for `/api/courses`
+All endpoints under **Authenticated** and **Admin** groups require a Bearer token from `/api/login`.
+
+### Public
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/api/register` | Register a new user |
+| `POST` | `/api/login` | Login and receive an access token |
+| `GET` | `/api/courses` | List all published courses |
+| `GET` | `/api/courses/{course}` | View a course detail |
+
+### Authenticated *(requires Bearer token)*
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/api/logout` | Logout and revoke the access token |
+| `GET` | `/api/user` | Get the currently authenticated user |
+
+### Admin *(requires Bearer token + `admin` role)*
+All admin routes are prefixed with `/api/admin`.
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/admin/topics` | List all topics |
+| `POST` | `/api/admin/topics` | Create a topic |
+| `GET` | `/api/admin/topics/{topic}` | Show a topic |
+| `PUT/PATCH` | `/api/admin/topics/{topic}` | Update a topic |
+| `DELETE` | `/api/admin/topics/{topic}` | Delete a topic |
+| `GET` | `/api/admin/languages` | List all languages |
+| `POST` | `/api/admin/languages` | Create a language |
+| `GET` | `/api/admin/languages/{language}` | Show a language |
+| `PUT/PATCH` | `/api/admin/languages/{language}` | Update a language |
+| `DELETE` | `/api/admin/languages/{language}` | Delete a language |
+| `POST` | `/api/admin/courses` | Create a course |
+| `GET` | `/api/admin/courses/{course}` | Show a course (admin view) |
+| `PUT/PATCH` | `/api/admin/courses/{course}` | Update a course |
+| `DELETE` | `/api/admin/courses/{course}` | Delete a course |
+| `GET` | `/api/admin/users` | List all users |
+| `POST` | `/api/admin/users` | Create a user |
+| `GET` | `/api/admin/users/{user}` | Show a user |
+| `PUT/PATCH` | `/api/admin/users/{user}` | Update a user |
+| `DELETE` | `/api/admin/users/{user}` | Delete a user |
