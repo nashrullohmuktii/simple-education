@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\TopicController;
 
@@ -17,4 +18,5 @@ Route::middleware('auth:api')->group(function () {
 
     Route::apiResource('topics', TopicController::class)->middleware('role:admin');
     Route::apiResource('languages', LanguageController::class)->middleware('role:admin');
+    Route::apiResource('courses', CourseController::class)->middleware('role:admin');
 });
