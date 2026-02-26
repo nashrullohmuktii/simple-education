@@ -39,7 +39,7 @@ class TopicTest extends TestCase
         Topic::create(['name' => 'Math', 'description' => 'Mathematics topic']);
         Topic::create(['name' => 'Science', 'description' => 'Science topic']);
 
-        $response = $this->getJson('/api/topics');
+        $response = $this->getJson('/api/admin/topics');
 
         $response->assertStatus(200)
             ->assertJsonCount(2, 'data')
@@ -57,7 +57,7 @@ class TopicTest extends TestCase
             'parent_id' => null,
         ];
 
-        $response = $this->postJson('/api/topics', $payload);
+        $response = $this->postJson('/api/admin/topics', $payload);
 
         $response->assertStatus(201)
             ->assertJsonFragment(['name' => 'History']);
@@ -71,7 +71,7 @@ class TopicTest extends TestCase
 
         $topic = Topic::create(['name' => 'Geography']);
 
-        $response = $this->getJson('/api/topics/' . $topic->id);
+        $response = $this->getJson('/api/admin/topics/' . $topic->id);
 
         $response->assertStatus(200)
             ->assertJsonFragment(['name' => 'Geography']);
@@ -87,7 +87,7 @@ class TopicTest extends TestCase
             'name' => 'New Name',
         ];
 
-        $response = $this->putJson('/api/topics/' . $topic->id, $payload);
+        $response = $this->putJson('/api/admin/topics/' . $topic->id, $payload);
 
         $response->assertStatus(200)
             ->assertJsonFragment(['name' => 'New Name']);
@@ -105,7 +105,7 @@ class TopicTest extends TestCase
 
         $topic = Topic::create(['name' => 'To be deleted']);
 
-        $response = $this->deleteJson('/api/topics/' . $topic->id);
+        $response = $this->deleteJson('/api/admin/topics/' . $topic->id);
 
         $response->assertStatus(200);
 
@@ -116,7 +116,7 @@ class TopicTest extends TestCase
     {
         $this->authenticate();
 
-        $response = $this->postJson('/api/topics', []);
+        $response = $this->postJson('/api/admin/topics', []);
 
         $response->assertStatus(422)
             ->assertJsonValidationErrors(['name']);
@@ -124,7 +124,7 @@ class TopicTest extends TestCase
 
     public function test_unauthenticated_user_cannot_access_topics()
     {
-        $response = $this->getJson('/api/topics');
+        $response = $this->getJson('/api/admin/topics');
 
         $response->assertStatus(401);
     }
@@ -133,7 +133,7 @@ class TopicTest extends TestCase
     {
         $this->authenticate('user');
 
-        $response = $this->getJson('/api/topics');
+        $response = $this->getJson('/api/admin/topics');
 
         $response->assertStatus(403);
     }

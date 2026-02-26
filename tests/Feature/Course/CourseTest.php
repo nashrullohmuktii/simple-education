@@ -81,7 +81,7 @@ class CourseTest extends TestCase
             'level' => 'advance',
         ];
 
-        $response = $this->postJson('/api/courses', $payload);
+        $response = $this->postJson('/api/admin/courses', $payload);
 
         $response->assertStatus(201)
             ->assertJsonFragment(['title' => 'VueJS Advanced']);
@@ -132,7 +132,7 @@ class CourseTest extends TestCase
             'price' => 75.00,
         ];
 
-        $response = $this->putJson('/api/courses/' . $course->id, $payload);
+        $response = $this->putJson('/api/admin/courses/' . $course->id, $payload);
 
         $response->assertStatus(200)
             ->assertJsonFragment(['title' => 'Angular Intermediate', 'price' => 75.00]);
@@ -161,7 +161,7 @@ class CourseTest extends TestCase
             'level' => 'all',
         ]);
 
-        $response = $this->deleteJson('/api/courses/' . $course->id);
+        $response = $this->deleteJson('/api/admin/courses/' . $course->id);
 
         $response->assertStatus(200);
 
@@ -172,7 +172,7 @@ class CourseTest extends TestCase
     {
         $this->authenticate();
 
-        $response = $this->postJson('/api/courses', []);
+        $response = $this->postJson('/api/admin/courses', []);
 
         $response->assertStatus(422)
             ->assertJsonValidationErrors(['topic_id', 'language_id', 'user_id', 'title', 'price']);
@@ -180,7 +180,7 @@ class CourseTest extends TestCase
 
     public function test_unauthenticated_user_cannot_create_course()
     {
-        $response = $this->postJson('/api/courses', []);
+        $response = $this->postJson('/api/admin/courses', []);
 
         $response->assertStatus(401);
     }
@@ -189,7 +189,7 @@ class CourseTest extends TestCase
     {
         $this->authenticate('user');
 
-        $response = $this->postJson('/api/courses', []);
+        $response = $this->postJson('/api/admin/courses', []);
 
         $response->assertStatus(403);
     }

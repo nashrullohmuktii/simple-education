@@ -39,7 +39,7 @@ class LanguageTest extends TestCase
         Language::create(['name' => 'English']);
         Language::create(['name' => 'Spanish']);
 
-        $response = $this->getJson('/api/languages');
+        $response = $this->getJson('/api/admin/languages');
 
         $response->assertStatus(200)
             ->assertJsonCount(2, 'data')
@@ -55,7 +55,7 @@ class LanguageTest extends TestCase
             'name' => 'French',
         ];
 
-        $response = $this->postJson('/api/languages', $payload);
+        $response = $this->postJson('/api/admin/languages', $payload);
 
         $response->assertStatus(201)
             ->assertJsonFragment(['name' => 'French']);
@@ -69,7 +69,7 @@ class LanguageTest extends TestCase
 
         $language = Language::create(['name' => 'German']);
 
-        $response = $this->getJson('/api/languages/' . $language->id);
+        $response = $this->getJson('/api/admin/languages/' . $language->id);
 
         $response->assertStatus(200)
             ->assertJsonFragment(['name' => 'German']);
@@ -85,7 +85,7 @@ class LanguageTest extends TestCase
             'name' => 'New Name',
         ];
 
-        $response = $this->putJson('/api/languages/' . $language->id, $payload);
+        $response = $this->putJson('/api/admin/languages/' . $language->id, $payload);
 
         $response->assertStatus(200)
             ->assertJsonFragment(['name' => 'New Name']);
@@ -102,7 +102,7 @@ class LanguageTest extends TestCase
 
         $language = Language::create(['name' => 'To be deleted']);
 
-        $response = $this->deleteJson('/api/languages/' . $language->id);
+        $response = $this->deleteJson('/api/admin/languages/' . $language->id);
 
         $response->assertStatus(200);
 
@@ -113,7 +113,7 @@ class LanguageTest extends TestCase
     {
         $this->authenticate();
 
-        $response = $this->postJson('/api/languages', []);
+        $response = $this->postJson('/api/admin/languages', []);
 
         $response->assertStatus(422)
             ->assertJsonValidationErrors(['name']);
@@ -121,7 +121,7 @@ class LanguageTest extends TestCase
 
     public function test_unauthenticated_user_cannot_access_languages()
     {
-        $response = $this->getJson('/api/languages');
+        $response = $this->getJson('/api/admin/languages');
 
         $response->assertStatus(401);
     }
@@ -130,7 +130,7 @@ class LanguageTest extends TestCase
     {
         $this->authenticate('user');
 
-        $response = $this->getJson('/api/languages');
+        $response = $this->getJson('/api/admin/languages');
 
         $response->assertStatus(403);
     }

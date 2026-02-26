@@ -1,0 +1,3675 @@
+{
+	"info": {
+		"_postman_id": "4ef45e12-47a5-425f-b8d8-86ec01e5a279",
+		"name": "Simple Education",
+		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Scripts\" tab**\n\nAdding tests to your requests can help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/fa30ea0a-373d-4545-a668-e7b283cca343/aW1hZ2UucG5n\" alt=\"\" height=\"1530\" width=\"2162\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n    \n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36268917"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"testname1a\",\n    \"email\": \"test@email.com\",\n    \"password\": \"password123\"   \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": [
+						{
+							"name": "201 - Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"testname1a\",\n    \"email\": \"test@email.com\",\n    \"password\": \"password123\"   \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 03:08:08 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status_code\": 201,\n    \"message\": \"Registration successful\",\n    \"errors\": null,\n    \"data\": {\n        \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTljOTdlOS1mZWIwLTcxZjgtYTNiNS0zZDZmYmFlMWY3NTIiLCJqdGkiOiI2M2VkZDgxMjdjOTFmNGJiZDNkYjEwMzEwNGQ4MDRiZDNhNDI4ODAyYjk5NzA2YWU0Y2FhMTQxN2QwZGI1NDkxMzM3YWZmMzZhZGJkNzk2MSIsImlhdCI6MTc3MjA3NTI4OC4xMTA0NTgsIm5iZiI6MTc3MjA3NTI4OC4xMTA0NjUsImV4cCI6MTgwMzYxMTI4OC4wODM2OCwic3ViIjoiMTMiLCJzY29wZXMiOltdfQ.jOH1JWYpqTqLb_FaVGl4uO8iNkszDvv73qEjxqB0gXomy8lLV-W4zOki4AkUcXBlFK7Zl_VZXEAEelNiidCpAcr2fTSWkytZpJSscBtYOGeFqc9rMaBvg-EkAPKra6Ci7E1sSpom6463NHcUhxNK_6YV1YHfQeMmqRgWkR3onGaYQZyusv52_fZUhhUbn3vT9TuOfUlT0GP_mVUrz33Lep3-REIxf5zW7G28XIzr4c1b-SNRe6WAptpcKC5WAC44wRaARR4_z3afi3F6PIOUcmBk91QqoNoakAT7ODeymNxIRYQkgfb2TtSFaK0pkmvGlOmBpfyX8Hr_kjJS6fteInECc6XsInK5sYH2BOQ3j1ThRkluZdkX_noeqS0tf4oUqqXm-xY-7IodByhzBWrn7-6HRpWYHgwfV6EjQogAYJlW86r0oAkeseSkqPGjm6acODU00jZ_F05J6c5SlhshM0LVcCHJGxjhDR_LAIQWfC-lDBQqSKxAf_dcibclVh57JsmpqjntzmOGxxe_NCXhuNxCRCuw--zs9tfx6IX_R7q9XpGoxDDBvQ8rNx4pA4zNvExM-hFzTS-ALefgjilztMV241xlxhUcERJCtjOHdP_L6xr9ahKkf1f4Je1pvKjgycarBP0Z5E94rSSRpGHUUgg8m8AZ8sxyVfDuSJUXPBg\",\n        \"token_type\": \"Bearer\",\n        \"user\": {\n            \"name\": \"testname1a\",\n            \"email\": \"test@email.com\",\n            \"updated_at\": \"2026-02-26T03:08:08.000000Z\",\n            \"created_at\": \"2026-02-26T03:08:08.000000Z\",\n            \"id\": 13\n        }\n    }\n}"
+						},
+						{
+							"name": "422 - Validation Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"register"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 02:58:16 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status_code\": 422,\n    \"message\": \"Validation Error\",\n    \"errors\": {\n        \"name\": [\n            \"The name field is required.\"\n        ],\n        \"email\": [\n            \"The email field is required.\"\n        ],\n        \"password\": [\n            \"The password field is required.\"\n        ]\n    },\n    \"data\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@example.com\",\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": [
+						{
+							"name": "200 - OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"admin@example.com\",\n    \"password\": \"password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 03:13:32 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status_code\": 200,\n    \"message\": \"Login successful\",\n    \"errors\": null,\n    \"data\": {\n        \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTljOTdlOS1mZWIwLTcxZjgtYTNiNS0zZDZmYmFlMWY3NTIiLCJqdGkiOiI5M2Y2Y2Q1ZDE0YmY0MGUwYzQzYjA4NGFlMDRlYjg5OTFiYTE2YjNhOWNjMTM4MDkyNWM2ZTI3ZWVhOTEzZWVkYTY4OTY1YTc0MzRiNDUxMSIsImlhdCI6MTc3MjA3NTYxMi4zNzEwMDYsIm5iZiI6MTc3MjA3NTYxMi4zNzEwMTUsImV4cCI6MTgwMzYxMTYxMi4zNjA1Nywic3ViIjoiMSIsInNjb3BlcyI6W119.OxvZEVBxPznyK6zOaVtQXyQlnq53StxYSKcy7G7WKWE_3cV7XaM3FvZDYx5Muov-gSYPxIAOM3v3V-hTWemwrjxezNfk_pvybTKURuZ1E-dXFP-BHbsuRY0GujqTz5AYb1e82pgQWDzZJwNU6DA2A24OQCXOG4VWfX2xuILtut1bpji1SWf4mEAzuQP1t-eSCooATI8TW3uTXwZr_50EMZrEh7xx7sVoRixML0wFzrTHfBVIzzkw_STSUoVxoIcay8vIyL-64TD7MVLuj7j1O1H5ZDp21Ve0cyq966La3wja9PQU4KXFtyeg73kmjzb-_59DloBKnSZC0hmf1vGgPRc8gUZO5IfqoLzNNiwcmMEw18EKlZA6tTE4miJoKmPJEuFnAsdh86WP2v7bqfohhojTOPR_ZUjomQytuuG0CYcW523FCy7CqARi_1gZd7GpT6ElknUeADkAVMX9q1SPL8y_Z4hkIr93mR7SDmfqOQkkGATFIesR9VO16QpYrNWvgVCkB2EIIBMKkXjVzRhOrOSZFJZcQCMe4_oOVZ0YdnGm4EYUnmwHdmGU1jt5qb63d9hNeUjyRpDBFop_inzAz8TV4BunfuBddu9LB4t5vzsgedzQxo_cN2k5RbCYvxy2ByPS_2_9RM0muvYfbS_ncXI-HFIFnWgwUzUfd4iPcjo\",\n        \"token_type\": \"Bearer\",\n        \"user\": {\n            \"id\": 1,\n            \"name\": \"Admin User\",\n            \"email\": \"admin@example.com\",\n            \"email_verified_at\": \"2026-02-26T03:05:19.000000Z\",\n            \"created_at\": \"2026-02-26T03:05:20.000000Z\",\n            \"updated_at\": \"2026-02-26T03:05:20.000000Z\"\n        }\n    }\n}"
+						},
+						{
+							"name": "401 - Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"admin@eample.com\",\n    \"password\": \"aaa\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 03:12:42 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status_code\": 401,\n    \"message\": \"The provided credentials do not match our records.\",\n    \"errors\": null,\n    \"data\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTljOTdlOS1mZWIwLTcxZjgtYTNiNS0zZDZmYmFlMWY3NTIiLCJqdGkiOiI2M2VkZDgxMjdjOTFmNGJiZDNkYjEwMzEwNGQ4MDRiZDNhNDI4ODAyYjk5NzA2YWU0Y2FhMTQxN2QwZGI1NDkxMzM3YWZmMzZhZGJkNzk2MSIsImlhdCI6MTc3MjA3NTI4OC4xMTA0NTgsIm5iZiI6MTc3MjA3NTI4OC4xMTA0NjUsImV4cCI6MTgwMzYxMTI4OC4wODM2OCwic3ViIjoiMTMiLCJzY29wZXMiOltdfQ.jOH1JWYpqTqLb_FaVGl4uO8iNkszDvv73qEjxqB0gXomy8lLV-W4zOki4AkUcXBlFK7Zl_VZXEAEelNiidCpAcr2fTSWkytZpJSscBtYOGeFqc9rMaBvg-EkAPKra6Ci7E1sSpom6463NHcUhxNK_6YV1YHfQeMmqRgWkR3onGaYQZyusv52_fZUhhUbn3vT9TuOfUlT0GP_mVUrz33Lep3-REIxf5zW7G28XIzr4c1b-SNRe6WAptpcKC5WAC44wRaARR4_z3afi3F6PIOUcmBk91QqoNoakAT7ODeymNxIRYQkgfb2TtSFaK0pkmvGlOmBpfyX8Hr_kjJS6fteInECc6XsInK5sYH2BOQ3j1ThRkluZdkX_noeqS0tf4oUqqXm-xY-7IodByhzBWrn7-6HRpWYHgwfV6EjQogAYJlW86r0oAkeseSkqPGjm6acODU00jZ_F05J6c5SlhshM0LVcCHJGxjhDR_LAIQWfC-lDBQqSKxAf_dcibclVh57JsmpqjntzmOGxxe_NCXhuNxCRCuw--zs9tfx6IX_R7q9XpGoxDDBvQ8rNx4pA4zNvExM-hFzTS-ALefgjilztMV241xlxhUcERJCtjOHdP_L6xr9ahKkf1f4Je1pvKjgycarBP0Z5E94rSSRpGHUUgg8m8AZ8sxyVfDuSJUXPBg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/logout",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Ok",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/logout",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"logout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 03:15:57 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status_code\": 200,\n    \"message\": \"Successfully logged out\",\n    \"errors\": null,\n    \"data\": []\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTljOTdlOS1mZWIwLTcxZjgtYTNiNS0zZDZmYmFlMWY3NTIiLCJqdGkiOiI5M2Y2Y2Q1ZDE0YmY0MGUwYzQzYjA4NGFlMDRlYjg5OTFiYTE2YjNhOWNjMTM4MDkyNWM2ZTI3ZWVhOTEzZWVkYTY4OTY1YTc0MzRiNDUxMSIsImlhdCI6MTc3MjA3NTYxMi4zNzEwMDYsIm5iZiI6MTc3MjA3NTYxMi4zNzEwMTUsImV4cCI6MTgwMzYxMTYxMi4zNjA1Nywic3ViIjoiMSIsInNjb3BlcyI6W119.OxvZEVBxPznyK6zOaVtQXyQlnq53StxYSKcy7G7WKWE_3cV7XaM3FvZDYx5Muov-gSYPxIAOM3v3V-hTWemwrjxezNfk_pvybTKURuZ1E-dXFP-BHbsuRY0GujqTz5AYb1e82pgQWDzZJwNU6DA2A24OQCXOG4VWfX2xuILtut1bpji1SWf4mEAzuQP1t-eSCooATI8TW3uTXwZr_50EMZrEh7xx7sVoRixML0wFzrTHfBVIzzkw_STSUoVxoIcay8vIyL-64TD7MVLuj7j1O1H5ZDp21Ve0cyq966La3wja9PQU4KXFtyeg73kmjzb-_59DloBKnSZC0hmf1vGgPRc8gUZO5IfqoLzNNiwcmMEw18EKlZA6tTE4miJoKmPJEuFnAsdh86WP2v7bqfohhojTOPR_ZUjomQytuuG0CYcW523FCy7CqARi_1gZd7GpT6ElknUeADkAVMX9q1SPL8y_Z4hkIr93mR7SDmfqOQkkGATFIesR9VO16QpYrNWvgVCkB2EIIBMKkXjVzRhOrOSZFJZcQCMe4_oOVZ0YdnGm4EYUnmwHdmGU1jt5qb63d9hNeUjyRpDBFop_inzAz8TV4BunfuBddu9LB4t5vzsgedzQxo_cN2k5RbCYvxy2ByPS_2_9RM0muvYfbS_ncXI-HFIFnWgwUzUfd4iPcjo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/admin/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/admin/users",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 03:37:02 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status_code\": 200,\n    \"message\": \"Users retrieved successfully\",\n    \"errors\": null,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Admin User\",\n            \"email\": \"admin@example.com\",\n            \"roles\": [\n                \"admin\"\n            ],\n            \"email_verified_at\": \"2026-02-26T03:05:19.000000Z\",\n            \"created_at\": \"2026-02-26T03:05:20.000000Z\",\n            \"updated_at\": \"2026-02-26T03:05:20.000000Z\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Vinnie Miller\",\n            \"email\": \"kulas.alexys@example.net\",\n            \"roles\": [\n                \"user\"\n            ],\n            \"email_verified_at\": \"2026-02-26T03:05:20.000000Z\",\n            \"created_at\": \"2026-02-26T03:05:21.000000Z\",\n            \"updated_at\": \"2026-02-26T03:05:21.000000Z\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Connie Larkin\",\n            \"email\": \"goyette.norwood@example.com\",\n            \"roles\": [\n                \"user\"\n            ],\n            \"email_verified_at\": \"2026-02-26T03:05:21.000000Z\",\n            \"created_at\": \"2026-02-26T03:05:21.000000Z\",\n            \"updated_at\": \"2026-02-26T03:05:21.000000Z\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Dr. Sierra Johnston Jr.\",\n            \"email\": \"luciano38@example.net\",\n            \"roles\": [\n                \"user\"\n            ],\n            \"email_verified_at\": \"2026-02-26T03:05:21.000000Z\",\n            \"created_at\": \"2026-02-26T03:05:21.000000Z\",\n            \"updated_at\": \"2026-02-26T03:05:21.000000Z\"\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Juliet Pacocha Sr.\",\n            \"email\": \"ethelyn.roob@example.net\",\n            \"roles\": [\n                \"user\"\n            ],\n            \"email_verified_at\": \"2026-02-26T03:05:21.000000Z\",\n            \"created_at\": \"2026-02-26T03:05:21.000000Z\",\n            \"updated_at\": \"2026-02-26T03:05:21.000000Z\"\n        },\n        {\n            \"id\": 6,\n            \"name\": \"Nikki Howe\",\n            \"email\": \"georgiana.mohr@example.net\",\n            \"roles\": [\n                \"user\"\n            ],\n            \"email_verified_at\": \"2026-02-26T03:05:21.000000Z\",\n            \"created_at\": \"2026-02-26T03:05:21.000000Z\",\n            \"updated_at\": \"2026-02-26T03:05:21.000000Z\"\n        },\n        {\n            \"id\": 7,\n            \"name\": \"Imani Ritchie\",\n            \"email\": \"gerhold.elliott@example.net\",\n            \"roles\": [\n                \"user\"\n            ],\n            \"email_verified_at\": \"2026-02-26T03:05:21.000000Z\",\n            \"created_at\": \"2026-02-26T03:05:21.000000Z\",\n            \"updated_at\": \"2026-02-26T03:05:21.000000Z\"\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Mrs. Karelle Sanford\",\n            \"email\": \"ohara.junius@example.com\",\n            \"roles\": [\n                \"user\"\n            ],\n            \"email_verified_at\": \"2026-02-26T03:05:21.000000Z\",\n            \"created_at\": \"2026-02-26T03:05:21.000000Z\",\n            \"updated_at\": \"2026-02-26T03:05:21.000000Z\"\n        },\n        {\n            \"id\": 9,\n            \"name\": \"Amy Kulas\",\n            \"email\": \"laila.sporer@example.org\",\n            \"roles\": [\n                \"user\"\n            ],\n            \"email_verified_at\": \"2026-02-26T03:05:21.000000Z\",\n            \"created_at\": \"2026-02-26T03:05:21.000000Z\",\n            \"updated_at\": \"2026-02-26T03:05:21.000000Z\"\n        },\n        {\n            \"id\": 10,\n            \"name\": \"Nakia Wisozk\",\n            \"email\": \"torrey.davis@example.com\",\n            \"roles\": [\n                \"user\"\n            ],\n            \"email_verified_at\": \"2026-02-26T03:05:21.000000Z\",\n            \"created_at\": \"2026-02-26T03:05:21.000000Z\",\n            \"updated_at\": \"2026-02-26T03:05:21.000000Z\"\n        },\n        {\n            \"id\": 11,\n            \"name\": \"Luna Wilkinson\",\n            \"email\": \"damion.nolan@example.org\",\n            \"roles\": [\n                \"user\"\n            ],\n            \"email_verified_at\": \"2026-02-26T03:05:21.000000Z\",\n            \"created_at\": \"2026-02-26T03:05:21.000000Z\",\n            \"updated_at\": \"2026-02-26T03:05:21.000000Z\"\n        },\n        {\n            \"id\": 12,\n            \"name\": \"testname1\",\n            \"email\": \"test@amila.com\",\n            \"roles\": [\n                \"user\"\n            ],\n            \"email_verified_at\": null,\n            \"created_at\": \"2026-02-26T03:05:38.000000Z\",\n            \"updated_at\": \"2026-02-26T03:05:38.000000Z\"\n        },\n        {\n            \"id\": 13,\n            \"name\": \"testname1a\",\n            \"email\": \"test@email.com\",\n            \"roles\": [\n                \"user\"\n            ],\n            \"email_verified_at\": null,\n            \"created_at\": \"2026-02-26T03:08:08.000000Z\",\n            \"updated_at\": \"2026-02-26T03:08:08.000000Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Show",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTljOTdlOS1mZWIwLTcxZjgtYTNiNS0zZDZmYmFlMWY3NTIiLCJqdGkiOiI5M2Y2Y2Q1ZDE0YmY0MGUwYzQzYjA4NGFlMDRlYjg5OTFiYTE2YjNhOWNjMTM4MDkyNWM2ZTI3ZWVhOTEzZWVkYTY4OTY1YTc0MzRiNDUxMSIsImlhdCI6MTc3MjA3NTYxMi4zNzEwMDYsIm5iZiI6MTc3MjA3NTYxMi4zNzEwMTUsImV4cCI6MTgwMzYxMTYxMi4zNjA1Nywic3ViIjoiMSIsInNjb3BlcyI6W119.OxvZEVBxPznyK6zOaVtQXyQlnq53StxYSKcy7G7WKWE_3cV7XaM3FvZDYx5Muov-gSYPxIAOM3v3V-hTWemwrjxezNfk_pvybTKURuZ1E-dXFP-BHbsuRY0GujqTz5AYb1e82pgQWDzZJwNU6DA2A24OQCXOG4VWfX2xuILtut1bpji1SWf4mEAzuQP1t-eSCooATI8TW3uTXwZr_50EMZrEh7xx7sVoRixML0wFzrTHfBVIzzkw_STSUoVxoIcay8vIyL-64TD7MVLuj7j1O1H5ZDp21Ve0cyq966La3wja9PQU4KXFtyeg73kmjzb-_59DloBKnSZC0hmf1vGgPRc8gUZO5IfqoLzNNiwcmMEw18EKlZA6tTE4miJoKmPJEuFnAsdh86WP2v7bqfohhojTOPR_ZUjomQytuuG0CYcW523FCy7CqARi_1gZd7GpT6ElknUeADkAVMX9q1SPL8y_Z4hkIr93mR7SDmfqOQkkGATFIesR9VO16QpYrNWvgVCkB2EIIBMKkXjVzRhOrOSZFJZcQCMe4_oOVZ0YdnGm4EYUnmwHdmGU1jt5qb63d9hNeUjyRpDBFop_inzAz8TV4BunfuBddu9LB4t5vzsgedzQxo_cN2k5RbCYvxy2ByPS_2_9RM0muvYfbS_ncXI-HFIFnWgwUzUfd4iPcjo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/admin/users/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/admin/users/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"users",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 03:40:07 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status_code\": 200,\n    \"message\": \"User retrieved successfully\",\n    \"errors\": null,\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"Admin User\",\n        \"email\": \"admin@example.com\",\n        \"roles\": [\n            \"admin\"\n        ],\n        \"email_verified_at\": \"2026-02-26T03:05:19.000000Z\",\n        \"created_at\": \"2026-02-26T03:05:20.000000Z\",\n        \"updated_at\": \"2026-02-26T03:05:20.000000Z\"\n    }\n}"
+						},
+						{
+							"name": "404 - Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/admin/users/1111",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"users",
+										"1111"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 03:46:08 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status_code\": 404,\n    \"message\": \"User not found\",\n    \"errors\": null,\n    \"data\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTljOTdlOS1mZWIwLTcxZjgtYTNiNS0zZDZmYmFlMWY3NTIiLCJqdGkiOiI5M2Y2Y2Q1ZDE0YmY0MGUwYzQzYjA4NGFlMDRlYjg5OTFiYTE2YjNhOWNjMTM4MDkyNWM2ZTI3ZWVhOTEzZWVkYTY4OTY1YTc0MzRiNDUxMSIsImlhdCI6MTc3MjA3NTYxMi4zNzEwMDYsIm5iZiI6MTc3MjA3NTYxMi4zNzEwMTUsImV4cCI6MTgwMzYxMTYxMi4zNjA1Nywic3ViIjoiMSIsInNjb3BlcyI6W119.OxvZEVBxPznyK6zOaVtQXyQlnq53StxYSKcy7G7WKWE_3cV7XaM3FvZDYx5Muov-gSYPxIAOM3v3V-hTWemwrjxezNfk_pvybTKURuZ1E-dXFP-BHbsuRY0GujqTz5AYb1e82pgQWDzZJwNU6DA2A24OQCXOG4VWfX2xuILtut1bpji1SWf4mEAzuQP1t-eSCooATI8TW3uTXwZr_50EMZrEh7xx7sVoRixML0wFzrTHfBVIzzkw_STSUoVxoIcay8vIyL-64TD7MVLuj7j1O1H5ZDp21Ve0cyq966La3wja9PQU4KXFtyeg73kmjzb-_59DloBKnSZC0hmf1vGgPRc8gUZO5IfqoLzNNiwcmMEw18EKlZA6tTE4miJoKmPJEuFnAsdh86WP2v7bqfohhojTOPR_ZUjomQytuuG0CYcW523FCy7CqARi_1gZd7GpT6ElknUeADkAVMX9q1SPL8y_Z4hkIr93mR7SDmfqOQkkGATFIesR9VO16QpYrNWvgVCkB2EIIBMKkXjVzRhOrOSZFJZcQCMe4_oOVZ0YdnGm4EYUnmwHdmGU1jt5qb63d9hNeUjyRpDBFop_inzAz8TV4BunfuBddu9LB4t5vzsgedzQxo_cN2k5RbCYvxy2ByPS_2_9RM0muvYfbS_ncXI-HFIFnWgwUzUfd4iPcjo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"User Baru 1\",\n    \"email\": \"Email@test1.com\",\n    \"password\": \"passpasspass\",\n    \"role\": \"user\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/admin/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201 - Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"User Baru 1\",\n    \"email\": \"Email@test1.com\",\n    \"password\": \"passpasspass\",\n    \"role\": \"user\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/admin/users",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"users"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 04:03:00 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status_code\": 201,\n    \"message\": \"User created successfully\",\n    \"errors\": null,\n    \"data\": {\n        \"id\": 15,\n        \"name\": \"User Baru 1\",\n        \"email\": \"Email@test1.com\",\n        \"roles\": [\n            \"user\"\n        ],\n        \"email_verified_at\": null,\n        \"created_at\": \"2026-02-26T04:03:00.000000Z\",\n        \"updated_at\": \"2026-02-26T04:03:00.000000Z\"\n    }\n}"
+						},
+						{
+							"name": "422 - Error Validation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/admin/users",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"users"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 04:01:35 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status_code\": 422,\n    \"message\": \"Validation Error\",\n    \"errors\": {\n        \"name\": [\n            \"The name field is required.\"\n        ],\n        \"email\": [\n            \"The email field is required.\"\n        ],\n        \"password\": [\n            \"The password field is required.\"\n        ]\n    },\n    \"data\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTljOTdlOS1mZWIwLTcxZjgtYTNiNS0zZDZmYmFlMWY3NTIiLCJqdGkiOiI5M2Y2Y2Q1ZDE0YmY0MGUwYzQzYjA4NGFlMDRlYjg5OTFiYTE2YjNhOWNjMTM4MDkyNWM2ZTI3ZWVhOTEzZWVkYTY4OTY1YTc0MzRiNDUxMSIsImlhdCI6MTc3MjA3NTYxMi4zNzEwMDYsIm5iZiI6MTc3MjA3NTYxMi4zNzEwMTUsImV4cCI6MTgwMzYxMTYxMi4zNjA1Nywic3ViIjoiMSIsInNjb3BlcyI6W119.OxvZEVBxPznyK6zOaVtQXyQlnq53StxYSKcy7G7WKWE_3cV7XaM3FvZDYx5Muov-gSYPxIAOM3v3V-hTWemwrjxezNfk_pvybTKURuZ1E-dXFP-BHbsuRY0GujqTz5AYb1e82pgQWDzZJwNU6DA2A24OQCXOG4VWfX2xuILtut1bpji1SWf4mEAzuQP1t-eSCooATI8TW3uTXwZr_50EMZrEh7xx7sVoRixML0wFzrTHfBVIzzkw_STSUoVxoIcay8vIyL-64TD7MVLuj7j1O1H5ZDp21Ve0cyq966La3wja9PQU4KXFtyeg73kmjzb-_59DloBKnSZC0hmf1vGgPRc8gUZO5IfqoLzNNiwcmMEw18EKlZA6tTE4miJoKmPJEuFnAsdh86WP2v7bqfohhojTOPR_ZUjomQytuuG0CYcW523FCy7CqARi_1gZd7GpT6ElknUeADkAVMX9q1SPL8y_Z4hkIr93mR7SDmfqOQkkGATFIesR9VO16QpYrNWvgVCkB2EIIBMKkXjVzRhOrOSZFJZcQCMe4_oOVZ0YdnGm4EYUnmwHdmGU1jt5qb63d9hNeUjyRpDBFop_inzAz8TV4BunfuBddu9LB4t5vzsgedzQxo_cN2k5RbCYvxy2ByPS_2_9RM0muvYfbS_ncXI-HFIFnWgwUzUfd4iPcjo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"User Baru edited\",\n    \"email\": \"Email@test1.coma\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/admin/users/4",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"users",
+								"4"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Ok",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"User Baru edited\",\n    \"email\": \"Email@test1.coma\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/admin/users/4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"users",
+										"4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 04:05:38 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status_code\": 200,\n    \"message\": \"User updated successfully\",\n    \"errors\": null,\n    \"data\": {\n        \"id\": 4,\n        \"name\": \"User Baru edited\",\n        \"email\": \"Email@test1.coma\",\n        \"roles\": [\n            \"user\"\n        ],\n        \"email_verified_at\": \"2026-02-26T03:05:21.000000Z\",\n        \"created_at\": \"2026-02-26T03:05:21.000000Z\",\n        \"updated_at\": \"2026-02-26T04:05:38.000000Z\"\n    }\n}"
+						},
+						{
+							"name": "404 - Not Found",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/admin/users/1111",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"users",
+										"1111"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 04:04:39 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status_code\": 404,\n    \"message\": \"User not found\",\n    \"errors\": null,\n    \"data\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTljOTdlOS1mZWIwLTcxZjgtYTNiNS0zZDZmYmFlMWY3NTIiLCJqdGkiOiI5M2Y2Y2Q1ZDE0YmY0MGUwYzQzYjA4NGFlMDRlYjg5OTFiYTE2YjNhOWNjMTM4MDkyNWM2ZTI3ZWVhOTEzZWVkYTY4OTY1YTc0MzRiNDUxMSIsImlhdCI6MTc3MjA3NTYxMi4zNzEwMDYsIm5iZiI6MTc3MjA3NTYxMi4zNzEwMTUsImV4cCI6MTgwMzYxMTYxMi4zNjA1Nywic3ViIjoiMSIsInNjb3BlcyI6W119.OxvZEVBxPznyK6zOaVtQXyQlnq53StxYSKcy7G7WKWE_3cV7XaM3FvZDYx5Muov-gSYPxIAOM3v3V-hTWemwrjxezNfk_pvybTKURuZ1E-dXFP-BHbsuRY0GujqTz5AYb1e82pgQWDzZJwNU6DA2A24OQCXOG4VWfX2xuILtut1bpji1SWf4mEAzuQP1t-eSCooATI8TW3uTXwZr_50EMZrEh7xx7sVoRixML0wFzrTHfBVIzzkw_STSUoVxoIcay8vIyL-64TD7MVLuj7j1O1H5ZDp21Ve0cyq966La3wja9PQU4KXFtyeg73kmjzb-_59DloBKnSZC0hmf1vGgPRc8gUZO5IfqoLzNNiwcmMEw18EKlZA6tTE4miJoKmPJEuFnAsdh86WP2v7bqfohhojTOPR_ZUjomQytuuG0CYcW523FCy7CqARi_1gZd7GpT6ElknUeADkAVMX9q1SPL8y_Z4hkIr93mR7SDmfqOQkkGATFIesR9VO16QpYrNWvgVCkB2EIIBMKkXjVzRhOrOSZFJZcQCMe4_oOVZ0YdnGm4EYUnmwHdmGU1jt5qb63d9hNeUjyRpDBFop_inzAz8TV4BunfuBddu9LB4t5vzsgedzQxo_cN2k5RbCYvxy2ByPS_2_9RM0muvYfbS_ncXI-HFIFnWgwUzUfd4iPcjo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/admin/users/4",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"users",
+								"4"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Ok",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/admin/users/4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"users",
+										"4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 04:07:21 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status_code\": 200,\n    \"message\": \"User deleted successfully\",\n    \"errors\": null,\n    \"data\": []\n}"
+						},
+						{
+							"name": "404 - Not Found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/admin/users/1111",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"users",
+										"1111"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 04:06:52 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status_code\": 404,\n    \"message\": \"User not found\",\n    \"errors\": null,\n    \"data\": []\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Topic",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTljOTdlOS1mZWIwLTcxZjgtYTNiNS0zZDZmYmFlMWY3NTIiLCJqdGkiOiI5M2Y2Y2Q1ZDE0YmY0MGUwYzQzYjA4NGFlMDRlYjg5OTFiYTE2YjNhOWNjMTM4MDkyNWM2ZTI3ZWVhOTEzZWVkYTY4OTY1YTc0MzRiNDUxMSIsImlhdCI6MTc3MjA3NTYxMi4zNzEwMDYsIm5iZiI6MTc3MjA3NTYxMi4zNzEwMTUsImV4cCI6MTgwMzYxMTYxMi4zNjA1Nywic3ViIjoiMSIsInNjb3BlcyI6W119.OxvZEVBxPznyK6zOaVtQXyQlnq53StxYSKcy7G7WKWE_3cV7XaM3FvZDYx5Muov-gSYPxIAOM3v3V-hTWemwrjxezNfk_pvybTKURuZ1E-dXFP-BHbsuRY0GujqTz5AYb1e82pgQWDzZJwNU6DA2A24OQCXOG4VWfX2xuILtut1bpji1SWf4mEAzuQP1t-eSCooATI8TW3uTXwZr_50EMZrEh7xx7sVoRixML0wFzrTHfBVIzzkw_STSUoVxoIcay8vIyL-64TD7MVLuj7j1O1H5ZDp21Ve0cyq966La3wja9PQU4KXFtyeg73kmjzb-_59DloBKnSZC0hmf1vGgPRc8gUZO5IfqoLzNNiwcmMEw18EKlZA6tTE4miJoKmPJEuFnAsdh86WP2v7bqfohhojTOPR_ZUjomQytuuG0CYcW523FCy7CqARi_1gZd7GpT6ElknUeADkAVMX9q1SPL8y_Z4hkIr93mR7SDmfqOQkkGATFIesR9VO16QpYrNWvgVCkB2EIIBMKkXjVzRhOrOSZFJZcQCMe4_oOVZ0YdnGm4EYUnmwHdmGU1jt5qb63d9hNeUjyRpDBFop_inzAz8TV4BunfuBddu9LB4t5vzsgedzQxo_cN2k5RbCYvxy2ByPS_2_9RM0muvYfbS_ncXI-HFIFnWgwUzUfd4iPcjo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/admin/topics",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"topics"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/admin/topics",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"topics"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 04:12:59 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status_code\": 200,\n    \"message\": \"Topics retrieved successfully\",\n    \"errors\": null,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Technology\",\n            \"description\": \"Software engineering, programming, and IT.\",\n            \"parent_id\": null,\n            \"created_at\": \"2026-02-26T03:05:22.000000Z\",\n            \"updated_at\": \"2026-02-26T03:05:22.000000Z\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Business\",\n            \"description\": \"Finance, marketing, and management.\",\n            \"parent_id\": null,\n            \"created_at\": \"2026-02-26T03:05:22.000000Z\",\n            \"updated_at\": \"2026-02-26T03:05:22.000000Z\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Web Development\",\n            \"description\": \"Building websites and web apps.\",\n            \"parent_id\": 1,\n            \"created_at\": \"2026-02-26T03:05:22.000000Z\",\n            \"updated_at\": \"2026-02-26T03:05:22.000000Z\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Data Science\",\n            \"description\": \"Data analysis, ML, and AI.\",\n            \"parent_id\": 1,\n            \"created_at\": \"2026-02-26T03:05:22.000000Z\",\n            \"updated_at\": \"2026-02-26T03:05:22.000000Z\"\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Digital Marketing\",\n            \"description\": \"SEO, social media, and ads.\",\n            \"parent_id\": 2,\n            \"created_at\": \"2026-02-26T03:05:22.000000Z\",\n            \"updated_at\": \"2026-02-26T03:05:22.000000Z\"\n        },\n        {\n            \"id\": 6,\n            \"name\": \"Parent Topic\",\n            \"description\": \"This is Parent\",\n            \"parent_id\": null,\n            \"created_at\": \"2026-02-26T04:12:35.000000Z\",\n            \"updated_at\": \"2026-02-26T04:12:35.000000Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Show",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTljOTdlOS1mZWIwLTcxZjgtYTNiNS0zZDZmYmFlMWY3NTIiLCJqdGkiOiI5M2Y2Y2Q1ZDE0YmY0MGUwYzQzYjA4NGFlMDRlYjg5OTFiYTE2YjNhOWNjMTM4MDkyNWM2ZTI3ZWVhOTEzZWVkYTY4OTY1YTc0MzRiNDUxMSIsImlhdCI6MTc3MjA3NTYxMi4zNzEwMDYsIm5iZiI6MTc3MjA3NTYxMi4zNzEwMTUsImV4cCI6MTgwMzYxMTYxMi4zNjA1Nywic3ViIjoiMSIsInNjb3BlcyI6W119.OxvZEVBxPznyK6zOaVtQXyQlnq53StxYSKcy7G7WKWE_3cV7XaM3FvZDYx5Muov-gSYPxIAOM3v3V-hTWemwrjxezNfk_pvybTKURuZ1E-dXFP-BHbsuRY0GujqTz5AYb1e82pgQWDzZJwNU6DA2A24OQCXOG4VWfX2xuILtut1bpji1SWf4mEAzuQP1t-eSCooATI8TW3uTXwZr_50EMZrEh7xx7sVoRixML0wFzrTHfBVIzzkw_STSUoVxoIcay8vIyL-64TD7MVLuj7j1O1H5ZDp21Ve0cyq966La3wja9PQU4KXFtyeg73kmjzb-_59DloBKnSZC0hmf1vGgPRc8gUZO5IfqoLzNNiwcmMEw18EKlZA6tTE4miJoKmPJEuFnAsdh86WP2v7bqfohhojTOPR_ZUjomQytuuG0CYcW523FCy7CqARi_1gZd7GpT6ElknUeADkAVMX9q1SPL8y_Z4hkIr93mR7SDmfqOQkkGATFIesR9VO16QpYrNWvgVCkB2EIIBMKkXjVzRhOrOSZFJZcQCMe4_oOVZ0YdnGm4EYUnmwHdmGU1jt5qb63d9hNeUjyRpDBFop_inzAz8TV4BunfuBddu9LB4t5vzsgedzQxo_cN2k5RbCYvxy2ByPS_2_9RM0muvYfbS_ncXI-HFIFnWgwUzUfd4iPcjo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/admin/topics/1123",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"topics",
+								"1123"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/admin/topics/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"topics",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 04:14:22 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status_code\": 200,\n    \"message\": \"Topic retrieved successfully\",\n    \"errors\": null,\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"Technology\",\n        \"description\": \"Software engineering, programming, and IT.\",\n        \"parent_id\": null,\n        \"created_at\": \"2026-02-26T03:05:22.000000Z\",\n        \"updated_at\": \"2026-02-26T03:05:22.000000Z\"\n    }\n}"
+						},
+						{
+							"name": "404 - Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/admin/topics/1123",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"topics",
+										"1123"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 04:14:55 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status_code\": 404,\n    \"message\": \"Topic not found\",\n    \"errors\": null,\n    \"data\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTljOTdlOS1mZWIwLTcxZjgtYTNiNS0zZDZmYmFlMWY3NTIiLCJqdGkiOiI5M2Y2Y2Q1ZDE0YmY0MGUwYzQzYjA4NGFlMDRlYjg5OTFiYTE2YjNhOWNjMTM4MDkyNWM2ZTI3ZWVhOTEzZWVkYTY4OTY1YTc0MzRiNDUxMSIsImlhdCI6MTc3MjA3NTYxMi4zNzEwMDYsIm5iZiI6MTc3MjA3NTYxMi4zNzEwMTUsImV4cCI6MTgwMzYxMTYxMi4zNjA1Nywic3ViIjoiMSIsInNjb3BlcyI6W119.OxvZEVBxPznyK6zOaVtQXyQlnq53StxYSKcy7G7WKWE_3cV7XaM3FvZDYx5Muov-gSYPxIAOM3v3V-hTWemwrjxezNfk_pvybTKURuZ1E-dXFP-BHbsuRY0GujqTz5AYb1e82pgQWDzZJwNU6DA2A24OQCXOG4VWfX2xuILtut1bpji1SWf4mEAzuQP1t-eSCooATI8TW3uTXwZr_50EMZrEh7xx7sVoRixML0wFzrTHfBVIzzkw_STSUoVxoIcay8vIyL-64TD7MVLuj7j1O1H5ZDp21Ve0cyq966La3wja9PQU4KXFtyeg73kmjzb-_59DloBKnSZC0hmf1vGgPRc8gUZO5IfqoLzNNiwcmMEw18EKlZA6tTE4miJoKmPJEuFnAsdh86WP2v7bqfohhojTOPR_ZUjomQytuuG0CYcW523FCy7CqARi_1gZd7GpT6ElknUeADkAVMX9q1SPL8y_Z4hkIr93mR7SDmfqOQkkGATFIesR9VO16QpYrNWvgVCkB2EIIBMKkXjVzRhOrOSZFJZcQCMe4_oOVZ0YdnGm4EYUnmwHdmGU1jt5qb63d9hNeUjyRpDBFop_inzAz8TV4BunfuBddu9LB4t5vzsgedzQxo_cN2k5RbCYvxy2ByPS_2_9RM0muvYfbS_ncXI-HFIFnWgwUzUfd4iPcjo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Parent Topic\",\n    \"description\": \"This is Parent\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/admin/topics",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"topics"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201 - Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Parent Topic\",\n    \"description\": \"This is Parent\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/admin/topics",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"topics"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 04:12:35 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status_code\": 201,\n    \"message\": \"Topic created successfully\",\n    \"errors\": null,\n    \"data\": {\n        \"id\": 6,\n        \"name\": \"Parent Topic\",\n        \"description\": \"This is Parent\",\n        \"parent_id\": null,\n        \"created_at\": \"2026-02-26T04:12:35.000000Z\",\n        \"updated_at\": \"2026-02-26T04:12:35.000000Z\"\n    }\n}"
+						},
+						{
+							"name": "422 - Error Validation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/admin/topics",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"topics"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 04:11:50 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status_code\": 422,\n    \"message\": \"Validation Error\",\n    \"errors\": {\n        \"name\": [\n            \"The name field is required.\"\n        ]\n    },\n    \"data\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTljOTdlOS1mZWIwLTcxZjgtYTNiNS0zZDZmYmFlMWY3NTIiLCJqdGkiOiI5M2Y2Y2Q1ZDE0YmY0MGUwYzQzYjA4NGFlMDRlYjg5OTFiYTE2YjNhOWNjMTM4MDkyNWM2ZTI3ZWVhOTEzZWVkYTY4OTY1YTc0MzRiNDUxMSIsImlhdCI6MTc3MjA3NTYxMi4zNzEwMDYsIm5iZiI6MTc3MjA3NTYxMi4zNzEwMTUsImV4cCI6MTgwMzYxMTYxMi4zNjA1Nywic3ViIjoiMSIsInNjb3BlcyI6W119.OxvZEVBxPznyK6zOaVtQXyQlnq53StxYSKcy7G7WKWE_3cV7XaM3FvZDYx5Muov-gSYPxIAOM3v3V-hTWemwrjxezNfk_pvybTKURuZ1E-dXFP-BHbsuRY0GujqTz5AYb1e82pgQWDzZJwNU6DA2A24OQCXOG4VWfX2xuILtut1bpji1SWf4mEAzuQP1t-eSCooATI8TW3uTXwZr_50EMZrEh7xx7sVoRixML0wFzrTHfBVIzzkw_STSUoVxoIcay8vIyL-64TD7MVLuj7j1O1H5ZDp21Ve0cyq966La3wja9PQU4KXFtyeg73kmjzb-_59DloBKnSZC0hmf1vGgPRc8gUZO5IfqoLzNNiwcmMEw18EKlZA6tTE4miJoKmPJEuFnAsdh86WP2v7bqfohhojTOPR_ZUjomQytuuG0CYcW523FCy7CqARi_1gZd7GpT6ElknUeADkAVMX9q1SPL8y_Z4hkIr93mR7SDmfqOQkkGATFIesR9VO16QpYrNWvgVCkB2EIIBMKkXjVzRhOrOSZFJZcQCMe4_oOVZ0YdnGm4EYUnmwHdmGU1jt5qb63d9hNeUjyRpDBFop_inzAz8TV4BunfuBddu9LB4t5vzsgedzQxo_cN2k5RbCYvxy2ByPS_2_9RM0muvYfbS_ncXI-HFIFnWgwUzUfd4iPcjo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Edited Topic\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/admin/topics/611",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"topics",
+								"611"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Ok",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Edited Topic\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/admin/topics/6",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"topics",
+										"6"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 04:16:21 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status_code\": 200,\n    \"message\": \"Topic updated successfully\",\n    \"errors\": null,\n    \"data\": {\n        \"id\": 6,\n        \"name\": \"Edited Topic\",\n        \"description\": \"This is Parent\",\n        \"parent_id\": null,\n        \"created_at\": \"2026-02-26T04:12:35.000000Z\",\n        \"updated_at\": \"2026-02-26T04:16:21.000000Z\"\n    }\n}"
+						},
+						{
+							"name": "404 - Not Found",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Edited Topic\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/admin/topics/611",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"topics",
+										"611"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 04:17:07 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"body": "{\n    \"status_code\": 404,\n    \"message\": \"Topic not found\",\n    \"errors\": null,\n    \"data\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTljOTdlOS1mZWIwLTcxZjgtYTNiNS0zZDZmYmFlMWY3NTIiLCJqdGkiOiI5M2Y2Y2Q1ZDE0YmY0MGUwYzQzYjA4NGFlMDRlYjg5OTFiYTE2YjNhOWNjMTM4MDkyNWM2ZTI3ZWVhOTEzZWVkYTY4OTY1YTc0MzRiNDUxMSIsImlhdCI6MTc3MjA3NTYxMi4zNzEwMDYsIm5iZiI6MTc3MjA3NTYxMi4zNzEwMTUsImV4cCI6MTgwMzYxMTYxMi4zNjA1Nywic3ViIjoiMSIsInNjb3BlcyI6W119.OxvZEVBxPznyK6zOaVtQXyQlnq53StxYSKcy7G7WKWE_3cV7XaM3FvZDYx5Muov-gSYPxIAOM3v3V-hTWemwrjxezNfk_pvybTKURuZ1E-dXFP-BHbsuRY0GujqTz5AYb1e82pgQWDzZJwNU6DA2A24OQCXOG4VWfX2xuILtut1bpji1SWf4mEAzuQP1t-eSCooATI8TW3uTXwZr_50EMZrEh7xx7sVoRixML0wFzrTHfBVIzzkw_STSUoVxoIcay8vIyL-64TD7MVLuj7j1O1H5ZDp21Ve0cyq966La3wja9PQU4KXFtyeg73kmjzb-_59DloBKnSZC0hmf1vGgPRc8gUZO5IfqoLzNNiwcmMEw18EKlZA6tTE4miJoKmPJEuFnAsdh86WP2v7bqfohhojTOPR_ZUjomQytuuG0CYcW523FCy7CqARi_1gZd7GpT6ElknUeADkAVMX9q1SPL8y_Z4hkIr93mR7SDmfqOQkkGATFIesR9VO16QpYrNWvgVCkB2EIIBMKkXjVzRhOrOSZFJZcQCMe4_oOVZ0YdnGm4EYUnmwHdmGU1jt5qb63d9hNeUjyRpDBFop_inzAz8TV4BunfuBddu9LB4t5vzsgedzQxo_cN2k5RbCYvxy2ByPS_2_9RM0muvYfbS_ncXI-HFIFnWgwUzUfd4iPcjo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/admin/topics/6",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"topics",
+								"6"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Ok",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/admin/topics/6",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"topics",
+										"6"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 04:18:21 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status_code\": 200,\n    \"message\": \"Topic deleted successfully\",\n    \"errors\": null,\n    \"data\": []\n}"
+						},
+						{
+							"name": "404 - Not Found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/admin/topics/6",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"topics",
+										"6"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 04:18:48 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"body": "{\n    \"status_code\": 404,\n    \"message\": \"Topic not found\",\n    \"errors\": null,\n    \"data\": []\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Language",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTljOTdlOS1mZWIwLTcxZjgtYTNiNS0zZDZmYmFlMWY3NTIiLCJqdGkiOiI5M2Y2Y2Q1ZDE0YmY0MGUwYzQzYjA4NGFlMDRlYjg5OTFiYTE2YjNhOWNjMTM4MDkyNWM2ZTI3ZWVhOTEzZWVkYTY4OTY1YTc0MzRiNDUxMSIsImlhdCI6MTc3MjA3NTYxMi4zNzEwMDYsIm5iZiI6MTc3MjA3NTYxMi4zNzEwMTUsImV4cCI6MTgwMzYxMTYxMi4zNjA1Nywic3ViIjoiMSIsInNjb3BlcyI6W119.OxvZEVBxPznyK6zOaVtQXyQlnq53StxYSKcy7G7WKWE_3cV7XaM3FvZDYx5Muov-gSYPxIAOM3v3V-hTWemwrjxezNfk_pvybTKURuZ1E-dXFP-BHbsuRY0GujqTz5AYb1e82pgQWDzZJwNU6DA2A24OQCXOG4VWfX2xuILtut1bpji1SWf4mEAzuQP1t-eSCooATI8TW3uTXwZr_50EMZrEh7xx7sVoRixML0wFzrTHfBVIzzkw_STSUoVxoIcay8vIyL-64TD7MVLuj7j1O1H5ZDp21Ve0cyq966La3wja9PQU4KXFtyeg73kmjzb-_59DloBKnSZC0hmf1vGgPRc8gUZO5IfqoLzNNiwcmMEw18EKlZA6tTE4miJoKmPJEuFnAsdh86WP2v7bqfohhojTOPR_ZUjomQytuuG0CYcW523FCy7CqARi_1gZd7GpT6ElknUeADkAVMX9q1SPL8y_Z4hkIr93mR7SDmfqOQkkGATFIesR9VO16QpYrNWvgVCkB2EIIBMKkXjVzRhOrOSZFJZcQCMe4_oOVZ0YdnGm4EYUnmwHdmGU1jt5qb63d9hNeUjyRpDBFop_inzAz8TV4BunfuBddu9LB4t5vzsgedzQxo_cN2k5RbCYvxy2ByPS_2_9RM0muvYfbS_ncXI-HFIFnWgwUzUfd4iPcjo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/admin/languages",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"languages"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/admin/languages",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"languages"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 04:23:30 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status_code\": 200,\n    \"message\": \"Languages retrieved successfully\",\n    \"errors\": null,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"English\",\n            \"created_at\": \"2026-02-26T03:05:22.000000Z\",\n            \"updated_at\": \"2026-02-26T03:05:22.000000Z\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Indonesian\",\n            \"created_at\": \"2026-02-26T03:05:22.000000Z\",\n            \"updated_at\": \"2026-02-26T03:05:22.000000Z\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Spanish\",\n            \"created_at\": \"2026-02-26T03:05:22.000000Z\",\n            \"updated_at\": \"2026-02-26T03:05:22.000000Z\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"French\",\n            \"created_at\": \"2026-02-26T03:05:22.000000Z\",\n            \"updated_at\": \"2026-02-26T03:05:22.000000Z\"\n        },\n        {\n            \"id\": 5,\n            \"name\": \"German\",\n            \"created_at\": \"2026-02-26T03:05:22.000000Z\",\n            \"updated_at\": \"2026-02-26T03:05:22.000000Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Show",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTljOTdlOS1mZWIwLTcxZjgtYTNiNS0zZDZmYmFlMWY3NTIiLCJqdGkiOiI5M2Y2Y2Q1ZDE0YmY0MGUwYzQzYjA4NGFlMDRlYjg5OTFiYTE2YjNhOWNjMTM4MDkyNWM2ZTI3ZWVhOTEzZWVkYTY4OTY1YTc0MzRiNDUxMSIsImlhdCI6MTc3MjA3NTYxMi4zNzEwMDYsIm5iZiI6MTc3MjA3NTYxMi4zNzEwMTUsImV4cCI6MTgwMzYxMTYxMi4zNjA1Nywic3ViIjoiMSIsInNjb3BlcyI6W119.OxvZEVBxPznyK6zOaVtQXyQlnq53StxYSKcy7G7WKWE_3cV7XaM3FvZDYx5Muov-gSYPxIAOM3v3V-hTWemwrjxezNfk_pvybTKURuZ1E-dXFP-BHbsuRY0GujqTz5AYb1e82pgQWDzZJwNU6DA2A24OQCXOG4VWfX2xuILtut1bpji1SWf4mEAzuQP1t-eSCooATI8TW3uTXwZr_50EMZrEh7xx7sVoRixML0wFzrTHfBVIzzkw_STSUoVxoIcay8vIyL-64TD7MVLuj7j1O1H5ZDp21Ve0cyq966La3wja9PQU4KXFtyeg73kmjzb-_59DloBKnSZC0hmf1vGgPRc8gUZO5IfqoLzNNiwcmMEw18EKlZA6tTE4miJoKmPJEuFnAsdh86WP2v7bqfohhojTOPR_ZUjomQytuuG0CYcW523FCy7CqARi_1gZd7GpT6ElknUeADkAVMX9q1SPL8y_Z4hkIr93mR7SDmfqOQkkGATFIesR9VO16QpYrNWvgVCkB2EIIBMKkXjVzRhOrOSZFJZcQCMe4_oOVZ0YdnGm4EYUnmwHdmGU1jt5qb63d9hNeUjyRpDBFop_inzAz8TV4BunfuBddu9LB4t5vzsgedzQxo_cN2k5RbCYvxy2ByPS_2_9RM0muvYfbS_ncXI-HFIFnWgwUzUfd4iPcjo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/admin/languages/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"languages",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/admin/languages/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"languages",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 04:24:01 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status_code\": 200,\n    \"message\": \"Language retrieved successfully\",\n    \"errors\": null,\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"English\",\n        \"created_at\": \"2026-02-26T03:05:22.000000Z\",\n        \"updated_at\": \"2026-02-26T03:05:22.000000Z\"\n    }\n}"
+						},
+						{
+							"name": "404 - Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/admin/languages/1111",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"languages",
+										"1111"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 04:24:26 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status_code\": 404,\n    \"message\": \"Language not found\",\n    \"errors\": null,\n    \"data\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTljOTdlOS1mZWIwLTcxZjgtYTNiNS0zZDZmYmFlMWY3NTIiLCJqdGkiOiI5M2Y2Y2Q1ZDE0YmY0MGUwYzQzYjA4NGFlMDRlYjg5OTFiYTE2YjNhOWNjMTM4MDkyNWM2ZTI3ZWVhOTEzZWVkYTY4OTY1YTc0MzRiNDUxMSIsImlhdCI6MTc3MjA3NTYxMi4zNzEwMDYsIm5iZiI6MTc3MjA3NTYxMi4zNzEwMTUsImV4cCI6MTgwMzYxMTYxMi4zNjA1Nywic3ViIjoiMSIsInNjb3BlcyI6W119.OxvZEVBxPznyK6zOaVtQXyQlnq53StxYSKcy7G7WKWE_3cV7XaM3FvZDYx5Muov-gSYPxIAOM3v3V-hTWemwrjxezNfk_pvybTKURuZ1E-dXFP-BHbsuRY0GujqTz5AYb1e82pgQWDzZJwNU6DA2A24OQCXOG4VWfX2xuILtut1bpji1SWf4mEAzuQP1t-eSCooATI8TW3uTXwZr_50EMZrEh7xx7sVoRixML0wFzrTHfBVIzzkw_STSUoVxoIcay8vIyL-64TD7MVLuj7j1O1H5ZDp21Ve0cyq966La3wja9PQU4KXFtyeg73kmjzb-_59DloBKnSZC0hmf1vGgPRc8gUZO5IfqoLzNNiwcmMEw18EKlZA6tTE4miJoKmPJEuFnAsdh86WP2v7bqfohhojTOPR_ZUjomQytuuG0CYcW523FCy7CqARi_1gZd7GpT6ElknUeADkAVMX9q1SPL8y_Z4hkIr93mR7SDmfqOQkkGATFIesR9VO16QpYrNWvgVCkB2EIIBMKkXjVzRhOrOSZFJZcQCMe4_oOVZ0YdnGm4EYUnmwHdmGU1jt5qb63d9hNeUjyRpDBFop_inzAz8TV4BunfuBddu9LB4t5vzsgedzQxo_cN2k5RbCYvxy2ByPS_2_9RM0muvYfbS_ncXI-HFIFnWgwUzUfd4iPcjo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Sundanese\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/admin/languages",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"languages"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201 - Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Sundanese\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/admin/languages",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"languages"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 04:25:22 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status_code\": 201,\n    \"message\": \"Language created successfully\",\n    \"errors\": null,\n    \"data\": {\n        \"id\": 6,\n        \"name\": \"Sundanese\",\n        \"created_at\": \"2026-02-26T04:25:22.000000Z\",\n        \"updated_at\": \"2026-02-26T04:25:22.000000Z\"\n    }\n}"
+						},
+						{
+							"name": "422 - Error Validations",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/admin/languages",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"languages"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 04:25:47 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"body": "{\n    \"status_code\": 422,\n    \"message\": \"Validation Error\",\n    \"errors\": {\n        \"name\": [\n            \"The name field is required.\"\n        ]\n    },\n    \"data\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTljOTdlOS1mZWIwLTcxZjgtYTNiNS0zZDZmYmFlMWY3NTIiLCJqdGkiOiI5M2Y2Y2Q1ZDE0YmY0MGUwYzQzYjA4NGFlMDRlYjg5OTFiYTE2YjNhOWNjMTM4MDkyNWM2ZTI3ZWVhOTEzZWVkYTY4OTY1YTc0MzRiNDUxMSIsImlhdCI6MTc3MjA3NTYxMi4zNzEwMDYsIm5iZiI6MTc3MjA3NTYxMi4zNzEwMTUsImV4cCI6MTgwMzYxMTYxMi4zNjA1Nywic3ViIjoiMSIsInNjb3BlcyI6W119.OxvZEVBxPznyK6zOaVtQXyQlnq53StxYSKcy7G7WKWE_3cV7XaM3FvZDYx5Muov-gSYPxIAOM3v3V-hTWemwrjxezNfk_pvybTKURuZ1E-dXFP-BHbsuRY0GujqTz5AYb1e82pgQWDzZJwNU6DA2A24OQCXOG4VWfX2xuILtut1bpji1SWf4mEAzuQP1t-eSCooATI8TW3uTXwZr_50EMZrEh7xx7sVoRixML0wFzrTHfBVIzzkw_STSUoVxoIcay8vIyL-64TD7MVLuj7j1O1H5ZDp21Ve0cyq966La3wja9PQU4KXFtyeg73kmjzb-_59DloBKnSZC0hmf1vGgPRc8gUZO5IfqoLzNNiwcmMEw18EKlZA6tTE4miJoKmPJEuFnAsdh86WP2v7bqfohhojTOPR_ZUjomQytuuG0CYcW523FCy7CqARi_1gZd7GpT6ElknUeADkAVMX9q1SPL8y_Z4hkIr93mR7SDmfqOQkkGATFIesR9VO16QpYrNWvgVCkB2EIIBMKkXjVzRhOrOSZFJZcQCMe4_oOVZ0YdnGm4EYUnmwHdmGU1jt5qb63d9hNeUjyRpDBFop_inzAz8TV4BunfuBddu9LB4t5vzsgedzQxo_cN2k5RbCYvxy2ByPS_2_9RM0muvYfbS_ncXI-HFIFnWgwUzUfd4iPcjo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"English Edited\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/admin/languages/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"languages",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Ok",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"English Edited\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/admin/languages/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"languages",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 04:26:56 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status_code\": 200,\n    \"message\": \"Language updated successfully\",\n    \"errors\": null,\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"English Edited\",\n        \"created_at\": \"2026-02-26T03:05:22.000000Z\",\n        \"updated_at\": \"2026-02-26T04:26:56.000000Z\"\n    }\n}"
+						},
+						{
+							"name": "404 - Not Found",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"English Edited\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/admin/languages/111111",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"languages",
+										"111111"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 04:27:19 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status_code\": 404,\n    \"message\": \"Language not found\",\n    \"errors\": null,\n    \"data\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTljOTdlOS1mZWIwLTcxZjgtYTNiNS0zZDZmYmFlMWY3NTIiLCJqdGkiOiI5M2Y2Y2Q1ZDE0YmY0MGUwYzQzYjA4NGFlMDRlYjg5OTFiYTE2YjNhOWNjMTM4MDkyNWM2ZTI3ZWVhOTEzZWVkYTY4OTY1YTc0MzRiNDUxMSIsImlhdCI6MTc3MjA3NTYxMi4zNzEwMDYsIm5iZiI6MTc3MjA3NTYxMi4zNzEwMTUsImV4cCI6MTgwMzYxMTYxMi4zNjA1Nywic3ViIjoiMSIsInNjb3BlcyI6W119.OxvZEVBxPznyK6zOaVtQXyQlnq53StxYSKcy7G7WKWE_3cV7XaM3FvZDYx5Muov-gSYPxIAOM3v3V-hTWemwrjxezNfk_pvybTKURuZ1E-dXFP-BHbsuRY0GujqTz5AYb1e82pgQWDzZJwNU6DA2A24OQCXOG4VWfX2xuILtut1bpji1SWf4mEAzuQP1t-eSCooATI8TW3uTXwZr_50EMZrEh7xx7sVoRixML0wFzrTHfBVIzzkw_STSUoVxoIcay8vIyL-64TD7MVLuj7j1O1H5ZDp21Ve0cyq966La3wja9PQU4KXFtyeg73kmjzb-_59DloBKnSZC0hmf1vGgPRc8gUZO5IfqoLzNNiwcmMEw18EKlZA6tTE4miJoKmPJEuFnAsdh86WP2v7bqfohhojTOPR_ZUjomQytuuG0CYcW523FCy7CqARi_1gZd7GpT6ElknUeADkAVMX9q1SPL8y_Z4hkIr93mR7SDmfqOQkkGATFIesR9VO16QpYrNWvgVCkB2EIIBMKkXjVzRhOrOSZFJZcQCMe4_oOVZ0YdnGm4EYUnmwHdmGU1jt5qb63d9hNeUjyRpDBFop_inzAz8TV4BunfuBddu9LB4t5vzsgedzQxo_cN2k5RbCYvxy2ByPS_2_9RM0muvYfbS_ncXI-HFIFnWgwUzUfd4iPcjo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/admin/languages/6",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"languages",
+								"6"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Ok",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/admin/languages/6",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"languages",
+										"6"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 04:28:10 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status_code\": 200,\n    \"message\": \"Language deleted successfully\",\n    \"errors\": null,\n    \"data\": []\n}"
+						},
+						{
+							"name": "404 - Not Found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/admin/languages/6",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"languages",
+										"6"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 04:28:57 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"body": "{\n    \"status_code\": 404,\n    \"message\": \"Language not found\",\n    \"errors\": null,\n    \"data\": []\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Course",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTljOTdlOS1mZWIwLTcxZjgtYTNiNS0zZDZmYmFlMWY3NTIiLCJqdGkiOiI5M2Y2Y2Q1ZDE0YmY0MGUwYzQzYjA4NGFlMDRlYjg5OTFiYTE2YjNhOWNjMTM4MDkyNWM2ZTI3ZWVhOTEzZWVkYTY4OTY1YTc0MzRiNDUxMSIsImlhdCI6MTc3MjA3NTYxMi4zNzEwMDYsIm5iZiI6MTc3MjA3NTYxMi4zNzEwMTUsImV4cCI6MTgwMzYxMTYxMi4zNjA1Nywic3ViIjoiMSIsInNjb3BlcyI6W119.OxvZEVBxPznyK6zOaVtQXyQlnq53StxYSKcy7G7WKWE_3cV7XaM3FvZDYx5Muov-gSYPxIAOM3v3V-hTWemwrjxezNfk_pvybTKURuZ1E-dXFP-BHbsuRY0GujqTz5AYb1e82pgQWDzZJwNU6DA2A24OQCXOG4VWfX2xuILtut1bpji1SWf4mEAzuQP1t-eSCooATI8TW3uTXwZr_50EMZrEh7xx7sVoRixML0wFzrTHfBVIzzkw_STSUoVxoIcay8vIyL-64TD7MVLuj7j1O1H5ZDp21Ve0cyq966La3wja9PQU4KXFtyeg73kmjzb-_59DloBKnSZC0hmf1vGgPRc8gUZO5IfqoLzNNiwcmMEw18EKlZA6tTE4miJoKmPJEuFnAsdh86WP2v7bqfohhojTOPR_ZUjomQytuuG0CYcW523FCy7CqARi_1gZd7GpT6ElknUeADkAVMX9q1SPL8y_Z4hkIr93mR7SDmfqOQkkGATFIesR9VO16QpYrNWvgVCkB2EIIBMKkXjVzRhOrOSZFJZcQCMe4_oOVZ0YdnGm4EYUnmwHdmGU1jt5qb63d9hNeUjyRpDBFop_inzAz8TV4BunfuBddu9LB4t5vzsgedzQxo_cN2k5RbCYvxy2ByPS_2_9RM0muvYfbS_ncXI-HFIFnWgwUzUfd4iPcjo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/admin/courses",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"courses"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/admin/courses",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"courses"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 04:33:38 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status_code\": 200,\n    \"message\": \"Courses retrieved successfully\",\n    \"errors\": null,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"topic_id\": 5,\n            \"language_id\": 5,\n            \"user_id\": 1,\n            \"title\": \"Laravel 12 Masterclass\",\n            \"description\": \"A comprehensive guide to building modern apps with Laravel 12.\",\n            \"short_description\": \"Master the Laravel framework.\",\n            \"price\": 199.9,\n            \"discount_rate\": 10,\n            \"thumbnail_url\": \"https://example.com/images/laravel.jpg\",\n            \"level\": \"intermediate\",\n            \"created_at\": \"2026-02-26T03:05:22.000000Z\",\n            \"updated_at\": \"2026-02-26T03:05:22.000000Z\"\n        },\n        {\n            \"id\": 2,\n            \"topic_id\": 4,\n            \"language_id\": 2,\n            \"user_id\": 1,\n            \"title\": \"Vue 3 for Beginners\",\n            \"description\": \"Learn Vue 3 from scratch with the Composition API.\",\n            \"short_description\": \"Start building reactive UIs.\",\n            \"price\": 50,\n            \"discount_rate\": 0,\n            \"thumbnail_url\": \"https://example.com/images/vue.jpg\",\n            \"level\": \"beginner\",\n            \"created_at\": \"2026-02-26T03:05:22.000000Z\",\n            \"updated_at\": \"2026-02-26T03:05:22.000000Z\"\n        },\n        {\n            \"id\": 3,\n            \"topic_id\": 2,\n            \"language_id\": 4,\n            \"user_id\": 1,\n            \"title\": \"Advanced Data Structures in Python\",\n            \"description\": \"Dive deep into algorithms and data structures.\",\n            \"short_description\": \"Prepare for coding interviews.\",\n            \"price\": 149,\n            \"discount_rate\": 25.5,\n            \"thumbnail_url\": \"https://example.com/images/ds.jpg\",\n            \"level\": \"advance\",\n            \"created_at\": \"2026-02-26T03:05:22.000000Z\",\n            \"updated_at\": \"2026-02-26T03:05:22.000000Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Show",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTljOTdlOS1mZWIwLTcxZjgtYTNiNS0zZDZmYmFlMWY3NTIiLCJqdGkiOiI5M2Y2Y2Q1ZDE0YmY0MGUwYzQzYjA4NGFlMDRlYjg5OTFiYTE2YjNhOWNjMTM4MDkyNWM2ZTI3ZWVhOTEzZWVkYTY4OTY1YTc0MzRiNDUxMSIsImlhdCI6MTc3MjA3NTYxMi4zNzEwMDYsIm5iZiI6MTc3MjA3NTYxMi4zNzEwMTUsImV4cCI6MTgwMzYxMTYxMi4zNjA1Nywic3ViIjoiMSIsInNjb3BlcyI6W119.OxvZEVBxPznyK6zOaVtQXyQlnq53StxYSKcy7G7WKWE_3cV7XaM3FvZDYx5Muov-gSYPxIAOM3v3V-hTWemwrjxezNfk_pvybTKURuZ1E-dXFP-BHbsuRY0GujqTz5AYb1e82pgQWDzZJwNU6DA2A24OQCXOG4VWfX2xuILtut1bpji1SWf4mEAzuQP1t-eSCooATI8TW3uTXwZr_50EMZrEh7xx7sVoRixML0wFzrTHfBVIzzkw_STSUoVxoIcay8vIyL-64TD7MVLuj7j1O1H5ZDp21Ve0cyq966La3wja9PQU4KXFtyeg73kmjzb-_59DloBKnSZC0hmf1vGgPRc8gUZO5IfqoLzNNiwcmMEw18EKlZA6tTE4miJoKmPJEuFnAsdh86WP2v7bqfohhojTOPR_ZUjomQytuuG0CYcW523FCy7CqARi_1gZd7GpT6ElknUeADkAVMX9q1SPL8y_Z4hkIr93mR7SDmfqOQkkGATFIesR9VO16QpYrNWvgVCkB2EIIBMKkXjVzRhOrOSZFJZcQCMe4_oOVZ0YdnGm4EYUnmwHdmGU1jt5qb63d9hNeUjyRpDBFop_inzAz8TV4BunfuBddu9LB4t5vzsgedzQxo_cN2k5RbCYvxy2ByPS_2_9RM0muvYfbS_ncXI-HFIFnWgwUzUfd4iPcjo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/admin/courses/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"courses",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/admin/courses/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"courses",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 04:34:20 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status_code\": 200,\n    \"message\": \"Course retrieved successfully\",\n    \"errors\": null,\n    \"data\": {\n        \"id\": 1,\n        \"topic_id\": 5,\n        \"language_id\": 5,\n        \"user_id\": 1,\n        \"title\": \"Laravel 12 Masterclass\",\n        \"description\": \"A comprehensive guide to building modern apps with Laravel 12.\",\n        \"short_description\": \"Master the Laravel framework.\",\n        \"price\": 199.9,\n        \"discount_rate\": 10,\n        \"thumbnail_url\": \"https://example.com/images/laravel.jpg\",\n        \"level\": \"intermediate\",\n        \"created_at\": \"2026-02-26T03:05:22.000000Z\",\n        \"updated_at\": \"2026-02-26T03:05:22.000000Z\"\n    }\n}"
+						},
+						{
+							"name": "404 - Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/admin/courses/11111",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"courses",
+										"11111"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 04:34:40 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status_code\": 404,\n    \"message\": \"Course not found\",\n    \"errors\": null,\n    \"data\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTljOTdlOS1mZWIwLTcxZjgtYTNiNS0zZDZmYmFlMWY3NTIiLCJqdGkiOiI5M2Y2Y2Q1ZDE0YmY0MGUwYzQzYjA4NGFlMDRlYjg5OTFiYTE2YjNhOWNjMTM4MDkyNWM2ZTI3ZWVhOTEzZWVkYTY4OTY1YTc0MzRiNDUxMSIsImlhdCI6MTc3MjA3NTYxMi4zNzEwMDYsIm5iZiI6MTc3MjA3NTYxMi4zNzEwMTUsImV4cCI6MTgwMzYxMTYxMi4zNjA1Nywic3ViIjoiMSIsInNjb3BlcyI6W119.OxvZEVBxPznyK6zOaVtQXyQlnq53StxYSKcy7G7WKWE_3cV7XaM3FvZDYx5Muov-gSYPxIAOM3v3V-hTWemwrjxezNfk_pvybTKURuZ1E-dXFP-BHbsuRY0GujqTz5AYb1e82pgQWDzZJwNU6DA2A24OQCXOG4VWfX2xuILtut1bpji1SWf4mEAzuQP1t-eSCooATI8TW3uTXwZr_50EMZrEh7xx7sVoRixML0wFzrTHfBVIzzkw_STSUoVxoIcay8vIyL-64TD7MVLuj7j1O1H5ZDp21Ve0cyq966La3wja9PQU4KXFtyeg73kmjzb-_59DloBKnSZC0hmf1vGgPRc8gUZO5IfqoLzNNiwcmMEw18EKlZA6tTE4miJoKmPJEuFnAsdh86WP2v7bqfohhojTOPR_ZUjomQytuuG0CYcW523FCy7CqARi_1gZd7GpT6ElknUeADkAVMX9q1SPL8y_Z4hkIr93mR7SDmfqOQkkGATFIesR9VO16QpYrNWvgVCkB2EIIBMKkXjVzRhOrOSZFJZcQCMe4_oOVZ0YdnGm4EYUnmwHdmGU1jt5qb63d9hNeUjyRpDBFop_inzAz8TV4BunfuBddu9LB4t5vzsgedzQxo_cN2k5RbCYvxy2ByPS_2_9RM0muvYfbS_ncXI-HFIFnWgwUzUfd4iPcjo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"topic_id\": 1,\n    \"language_id\": 1,\n    \"user_id\": 2,\n    \"title\": \"This is Title\",\n    \"description\": \"description\",\n    \"short_description\": \"desc\",\n    \"price\": 12.12,\n    \"discount_rate\": 5,\n    \"thumbnail_url\": \"https://example.com/images/laravel.jpg\",\n    \"level\": \"advance\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/admin/courses",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"courses"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201 - Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"topic_id\": 1,\n    \"language_id\": 1,\n    \"user_id\": 2,\n    \"title\": \"This is Title\",\n    \"description\": \"description\",\n    \"short_description\": \"desc\",\n    \"price\": 12.12,\n    \"discount_rate\": 5,\n    \"thumbnail_url\": \"https://example.com/images/laravel.jpg\",\n    \"level\": \"advance\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/admin/courses",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"courses"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 04:42:41 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status_code\": 201,\n    \"message\": \"Course created successfully\",\n    \"errors\": null,\n    \"data\": {\n        \"id\": 4,\n        \"topic_id\": 1,\n        \"language_id\": 1,\n        \"user_id\": 2,\n        \"title\": \"This is Title\",\n        \"description\": \"description\",\n        \"short_description\": \"desc\",\n        \"price\": 12.12,\n        \"discount_rate\": 5,\n        \"thumbnail_url\": \"https://example.com/images/laravel.jpg\",\n        \"level\": \"advance\",\n        \"created_at\": \"2026-02-26T04:42:41.000000Z\",\n        \"updated_at\": \"2026-02-26T04:42:41.000000Z\"\n    }\n}"
+						},
+						{
+							"name": "422 - Error Validations",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/admin/courses",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"courses"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 04:35:36 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status_code\": 422,\n    \"message\": \"Validation Error\",\n    \"errors\": {\n        \"topic_id\": [\n            \"The topic id field is required.\"\n        ],\n        \"language_id\": [\n            \"The language id field is required.\"\n        ],\n        \"user_id\": [\n            \"The user id field is required.\"\n        ],\n        \"title\": [\n            \"The title field is required.\"\n        ],\n        \"description\": [\n            \"The description field is required.\"\n        ],\n        \"short_description\": [\n            \"The short description field is required.\"\n        ],\n        \"price\": [\n            \"The price field is required.\"\n        ],\n        \"discount_rate\": [\n            \"The discount rate field is required.\"\n        ],\n        \"thumbnail_url\": [\n            \"The thumbnail url field is required.\"\n        ],\n        \"level\": [\n            \"The level field is required.\"\n        ]\n    },\n    \"data\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTljOTdlOS1mZWIwLTcxZjgtYTNiNS0zZDZmYmFlMWY3NTIiLCJqdGkiOiI5M2Y2Y2Q1ZDE0YmY0MGUwYzQzYjA4NGFlMDRlYjg5OTFiYTE2YjNhOWNjMTM4MDkyNWM2ZTI3ZWVhOTEzZWVkYTY4OTY1YTc0MzRiNDUxMSIsImlhdCI6MTc3MjA3NTYxMi4zNzEwMDYsIm5iZiI6MTc3MjA3NTYxMi4zNzEwMTUsImV4cCI6MTgwMzYxMTYxMi4zNjA1Nywic3ViIjoiMSIsInNjb3BlcyI6W119.OxvZEVBxPznyK6zOaVtQXyQlnq53StxYSKcy7G7WKWE_3cV7XaM3FvZDYx5Muov-gSYPxIAOM3v3V-hTWemwrjxezNfk_pvybTKURuZ1E-dXFP-BHbsuRY0GujqTz5AYb1e82pgQWDzZJwNU6DA2A24OQCXOG4VWfX2xuILtut1bpji1SWf4mEAzuQP1t-eSCooATI8TW3uTXwZr_50EMZrEh7xx7sVoRixML0wFzrTHfBVIzzkw_STSUoVxoIcay8vIyL-64TD7MVLuj7j1O1H5ZDp21Ve0cyq966La3wja9PQU4KXFtyeg73kmjzb-_59DloBKnSZC0hmf1vGgPRc8gUZO5IfqoLzNNiwcmMEw18EKlZA6tTE4miJoKmPJEuFnAsdh86WP2v7bqfohhojTOPR_ZUjomQytuuG0CYcW523FCy7CqARi_1gZd7GpT6ElknUeADkAVMX9q1SPL8y_Z4hkIr93mR7SDmfqOQkkGATFIesR9VO16QpYrNWvgVCkB2EIIBMKkXjVzRhOrOSZFJZcQCMe4_oOVZ0YdnGm4EYUnmwHdmGU1jt5qb63d9hNeUjyRpDBFop_inzAz8TV4BunfuBddu9LB4t5vzsgedzQxo_cN2k5RbCYvxy2ByPS_2_9RM0muvYfbS_ncXI-HFIFnWgwUzUfd4iPcjo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"topic_id\": 1,\n    \"language_id\": 1,\n    \"user_id\": 2,\n    \"title\": \"This is Title Edited\",\n    \"description\": \"description\",\n    \"short_description\": \"desc\",\n    \"price\": 12.12,\n    \"discount_rate\": 5,\n    \"thumbnail_url\": \"https://example.com/images/laravel.jpg\",\n    \"level\": \"advance\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/admin/courses/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"courses",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Ok",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"topic_id\": 1,\n    \"language_id\": 1,\n    \"user_id\": 2,\n    \"title\": \"This is Title Edited\",\n    \"description\": \"description\",\n    \"short_description\": \"desc\",\n    \"price\": 12.12,\n    \"discount_rate\": 5,\n    \"thumbnail_url\": \"https://example.com/images/laravel.jpg\",\n    \"level\": \"advance\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/admin/courses/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"courses",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 04:43:29 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status_code\": 200,\n    \"message\": \"Course updated successfully\",\n    \"errors\": null,\n    \"data\": {\n        \"id\": 1,\n        \"topic_id\": 1,\n        \"language_id\": 1,\n        \"user_id\": 2,\n        \"title\": \"This is Title Edited\",\n        \"description\": \"description\",\n        \"short_description\": \"desc\",\n        \"price\": 12.12,\n        \"discount_rate\": 5,\n        \"thumbnail_url\": \"https://example.com/images/laravel.jpg\",\n        \"level\": \"advance\",\n        \"created_at\": \"2026-02-26T03:05:22.000000Z\",\n        \"updated_at\": \"2026-02-26T04:43:29.000000Z\"\n    }\n}"
+						},
+						{
+							"name": "404 - Not Found",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"topic_id\": 1,\n    \"language_id\": 1,\n    \"user_id\": 2,\n    \"title\": \"This is Title Edited\",\n    \"description\": \"description\",\n    \"short_description\": \"desc\",\n    \"price\": 12.12,\n    \"discount_rate\": 5,\n    \"thumbnail_url\": \"https://example.com/images/laravel.jpg\",\n    \"level\": \"advance\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/admin/courses/1111",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"courses",
+										"1111"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 04:44:30 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status_code\": 404,\n    \"message\": \"Course not found\",\n    \"errors\": null,\n    \"data\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTljOTdlOS1mZWIwLTcxZjgtYTNiNS0zZDZmYmFlMWY3NTIiLCJqdGkiOiI5M2Y2Y2Q1ZDE0YmY0MGUwYzQzYjA4NGFlMDRlYjg5OTFiYTE2YjNhOWNjMTM4MDkyNWM2ZTI3ZWVhOTEzZWVkYTY4OTY1YTc0MzRiNDUxMSIsImlhdCI6MTc3MjA3NTYxMi4zNzEwMDYsIm5iZiI6MTc3MjA3NTYxMi4zNzEwMTUsImV4cCI6MTgwMzYxMTYxMi4zNjA1Nywic3ViIjoiMSIsInNjb3BlcyI6W119.OxvZEVBxPznyK6zOaVtQXyQlnq53StxYSKcy7G7WKWE_3cV7XaM3FvZDYx5Muov-gSYPxIAOM3v3V-hTWemwrjxezNfk_pvybTKURuZ1E-dXFP-BHbsuRY0GujqTz5AYb1e82pgQWDzZJwNU6DA2A24OQCXOG4VWfX2xuILtut1bpji1SWf4mEAzuQP1t-eSCooATI8TW3uTXwZr_50EMZrEh7xx7sVoRixML0wFzrTHfBVIzzkw_STSUoVxoIcay8vIyL-64TD7MVLuj7j1O1H5ZDp21Ve0cyq966La3wja9PQU4KXFtyeg73kmjzb-_59DloBKnSZC0hmf1vGgPRc8gUZO5IfqoLzNNiwcmMEw18EKlZA6tTE4miJoKmPJEuFnAsdh86WP2v7bqfohhojTOPR_ZUjomQytuuG0CYcW523FCy7CqARi_1gZd7GpT6ElknUeADkAVMX9q1SPL8y_Z4hkIr93mR7SDmfqOQkkGATFIesR9VO16QpYrNWvgVCkB2EIIBMKkXjVzRhOrOSZFJZcQCMe4_oOVZ0YdnGm4EYUnmwHdmGU1jt5qb63d9hNeUjyRpDBFop_inzAz8TV4BunfuBddu9LB4t5vzsgedzQxo_cN2k5RbCYvxy2ByPS_2_9RM0muvYfbS_ncXI-HFIFnWgwUzUfd4iPcjo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/admin/courses/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"courses",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Ok",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/admin/courses/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"courses",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 04:45:31 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status_code\": 200,\n    \"message\": \"Course deleted successfully\",\n    \"errors\": null,\n    \"data\": []\n}"
+						},
+						{
+							"name": "Delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/admin/courses/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"courses",
+										"1"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.5.3"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Feb 2026 04:45:52 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"body": "{\n    \"status_code\": 404,\n    \"message\": \"Course not found\",\n    \"errors\": null,\n    \"data\": []\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://template.postman-echo.com"
+		}
+	]
+}

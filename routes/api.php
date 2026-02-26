@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\TopicController;
+use App\Http\Controllers\UserController;
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
@@ -18,9 +19,10 @@ Route::middleware('auth:api')->group(function () {
         return $request->user();
     });
 
-    Route::middleware('role:admin')->group(function () {
+    Route::middleware('role:admin')->prefix('admin')->group(function () {
         Route::apiResource('topics', TopicController::class);
         Route::apiResource('languages', LanguageController::class);
-        Route::apiResource('courses', CourseController::class)->except(['index', 'show']);
+        Route::apiResource('courses', CourseController::class);
+        Route::apiResource('users', UserController::class);
     });
 });
