@@ -17,15 +17,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             RoleSeeder::class,
+            UserSeeder::class,
+            LanguageSeeder::class,
+            TopicSeeder::class,
+            CourseSeeder::class,
         ]);
-
-        // User::factory(10)->create();
-
-        User::factory()
-            ->count(5)
-            ->create()
-            ->each(function ($user) {
-                $user->assignRole('user');
-            });
     }
 }
