@@ -42,10 +42,8 @@ class CourseTest extends TestCase
         return $user;
     }
 
-    public function test_can_list_courses()
+    public function test_can_list_courses_publicly()
     {
-        $this->authenticate();
-
         Course::create([
             'topic_id' => $this->topic->id,
             'language_id' => $this->language->id,
@@ -91,10 +89,8 @@ class CourseTest extends TestCase
         $this->assertDatabaseHas('courses', ['title' => 'VueJS Advanced']);
     }
 
-    public function test_can_show_course()
+    public function test_can_show_course_publicly()
     {
-        $this->authenticate();
-
         $course = Course::create([
             'topic_id' => $this->topic->id,
             'language_id' => $this->language->id,
@@ -182,18 +178,18 @@ class CourseTest extends TestCase
             ->assertJsonValidationErrors(['topic_id', 'language_id', 'user_id', 'title', 'price']);
     }
 
-    public function test_unauthenticated_user_cannot_access_courses()
+    public function test_unauthenticated_user_cannot_create_course()
     {
-        $response = $this->getJson('/api/courses');
+        $response = $this->postJson('/api/courses', []);
 
         $response->assertStatus(401);
     }
 
-    public function test_non_admin_user_cannot_access_courses()
+    public function test_non_admin_user_cannot_create_course()
     {
         $this->authenticate('user');
 
-        $response = $this->getJson('/api/courses');
+        $response = $this->postJson('/api/courses', []);
 
         $response->assertStatus(403);
     }

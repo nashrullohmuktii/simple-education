@@ -10,13 +10,17 @@ use App\Http\Controllers\TopicController;
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
+Route::apiResource('courses', CourseController::class)->only(['index', 'show']);
+
 Route::middleware('auth:api')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
 
-    Route::apiResource('topics', TopicController::class)->middleware('role:admin');
-    Route::apiResource('languages', LanguageController::class)->middleware('role:admin');
-    Route::apiResource('courses', CourseController::class)->middleware('role:admin');
+    Route::middleware('role:admin')->group(function () {
+        Route::apiResource('topics', TopicController::class);
+        Route::apiResource('languages', LanguageController::class);
+        Route::apiResource('courses', CourseController::class)->except(['index', 'show']);
+    });
 });
